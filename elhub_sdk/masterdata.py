@@ -38,7 +38,7 @@ def _create_eh_request(
 
     # create the generic part of the payload
     payload = {
-        'QueryTypeCode': query_type_code,
+        'QueryTypeCode': query_type_code.value,
         'MeteringPointUsedDomainLocation': {
             'Identification': {
                 '_value_1': meter_identificator,
