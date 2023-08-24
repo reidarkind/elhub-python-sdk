@@ -142,11 +142,12 @@ def request_masterdata_customer(
     try:
         response = client.service.RequestDataFromElhub(eh_request)
         if history.last_received:
-            return True
+            xml_response = ET.tostring(history.last_received["envelope"], encoding="unicode")
+            return xml_response
         logger.error(f"Unknown error: {response}")
     except Exception as ex:
         logger.exception(ex)
-    return False
+    return None
 
 
 def request_masterdata_metering_point(
@@ -189,8 +190,9 @@ def request_masterdata_metering_point(
     try:
         response = client.service.RequestDataFromElhub(eh_request)
         if history.last_received:
-            return True
+            xml_response = ET.tostring(history.last_received["envelope"], encoding="unicode")
+            return xml_response
         logger.error(f"Unknown error: {response}")
     except Exception as ex:
         logger.exception(ex)
-    return False
+    return None
